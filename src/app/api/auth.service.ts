@@ -10,8 +10,6 @@ export class AuthService {
   constructor(public afAuth: AngularFireAuth) { }
 
   login(){
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(_ => {
-      console.log('success!');
-    })
+    return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
   }
 }
