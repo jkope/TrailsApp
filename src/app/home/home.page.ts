@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MapquestService } from '../api/mapquest.service';
 
 
 @Component({
@@ -9,9 +10,8 @@ import { Component } from '@angular/core';
 export class HomePage {
 
 
-  constructor( ) {
+  constructor() {
 
   }
-
 
 }
