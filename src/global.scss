@@ -9,3 +9,21 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+.title {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user {
+    display: flex;
+    justify-content: center;
+    div {
+        padding: 1em;
+    }
+}
+
+.avatar {
+    height: 32px;
+    border-radius: 50%;
+}
