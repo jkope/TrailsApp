@@ -44,9 +44,30 @@
 
     <ion-card-content>
       <ion-button (click)="trailsByGeoLoc()">Get Current Location</ion-button>
-      <ion-button (click)="log()">trails$</ion-button>
+      <!--<ion-button (click)="log()">trails$</ion-button>-->
     </ion-card-content>
   </ion-card>
+  <div class="cardlist" *ngIf="trails$ | async as trails">
+    <!--{{trails | json}}-->
+    <ion-card *ngFor="let trail of trails.trails" (click)="goToTrail(trail.id)">
+      <ion-img src="{{trail.imgMedium}}" class="image"></ion-img>
+      <!--{{trail | json}}-->
+      <ion-card-header>
+        <ion-card-title class="trail-title">{{trail.name}}</ion-card-title>
+        <ion-card-subtitle>{{trail.location}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="info">
+          <p>Length: {{trail.length}} miles</p>
+          <p *ngIf="trail.difficulty == 'green'">Difficulty level: 1</p>
+          <p *ngIf="trail.difficulty == 'greenBlue'">Difficulty level: 2</p>
+          <p *ngIf="trail.difficulty == 'blue'">Difficulty level: 3</p>
+          <p *ngIf="trail.difficulty == 'blueBlack'">Difficulty level: 4</p>
+          <p *ngIf="trail.difficulty == 'black'">Difficulty level: 5</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 
 
 </ion-content>

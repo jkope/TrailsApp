@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="trail">
+  <!--<div id="map" style="width:100%; height:100%;"></div>-->
+  <ion-img src="{{trail.imgMedium}}" class="main-image"></ion-img>
+  <ion-title>{{trail.name}}</ion-title>
+</ion-content>

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{trailName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!--<ion-content padding>-->
+
+<!--</ion-content>-->
+
+<ion-tabs color="dark">
+  <ion-tab-bar slot="bottom" color="dark">
+    <ion-tab-button tab="details">
+      <ion-icon name="information-circle"></ion-icon>
+      <ion-label>Details</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="weather">
+      <ion-icon name="sunny"></ion-icon>
+      <ion-label>Weather</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="rating">
+      <ion-icon name="star"></ion-icon>
+      <ion-label>Ratings</ion-label>
+    </ion-tab-button>
+    <!--<ion-tab-button tab="related">-->
+      <!--<ion-icon name="bulb"></ion-icon>-->
+      <!--<ion-label>Related</ion-label>-->
+    <!--</ion-tab-button>-->
+  </ion-tab-bar>
+</ion-tabs>

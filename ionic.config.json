@@ -1,6 +1,8 @@
 {
   "name": "Trails",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "62240959"
 }
