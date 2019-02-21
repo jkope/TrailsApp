@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../api/auth.service';
 
 @Component({
   selector: 'app-user',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.page.scss'],
 })
 export class UserPage implements OnInit {
+private user$;
 
-  constructor() { }
+  constructor(
+    private auth: AuthService,
+  ) { }
 
   ngOnInit() {
+    this.user$ = this.auth.authenticated();
   }
+
+  login() {
+    this.auth.login();
+  }
+
+  logOut() {
+    this.auth.logOut();
+  }
+
 
 }

@@ -7,15 +7,22 @@ const routes: Routes = [
     redirectTo: 'search',
     pathMatch: 'full'
   },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+
   { path: 'search', loadChildren: './search/search.module#SearchPageModule' },
   { path: 'user', loadChildren: './user/user.module#UserPageModule' },
-  { path: 'info', loadChildren: './user/info/info.module#InfoPageModule' }
+  { path: 'info', loadChildren: './user/info/info.module#InfoPageModule' },
+  { path: 'trail/:id', loadChildren: './trail/trail.module#TrailPageModule' },
+  { path: 'details', loadChildren: './trail/details/details.module#DetailsPageModule' },
+  { path: 'weather', loadChildren: './trail/weather/weather.module#WeatherPageModule' },
+  { path: 'rating', loadChildren: './trail/rating/rating.module#RatingPageModule' }
+
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    paramsInheritanceStrategy: 'always',
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
