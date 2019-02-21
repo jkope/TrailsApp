@@ -13,7 +13,7 @@ export class DetailsPage implements OnInit {
   // map: Map;
   // lat = 40.3769;
   // lng = -111.789;
-  trail$;
+  trail;
 
   constructor(
       private router: Router,
@@ -23,7 +23,9 @@ export class DetailsPage implements OnInit {
 
   ngOnInit() {
     console.log(this.route.snapshot.paramMap.get('id'));
-    this.trail$ = this.trailApi.getTrailsById([Number(this.route.snapshot.paramMap.get('id'))]);
+    this.trailApi.getTrailsById([Number(this.route.snapshot.paramMap.get('id'))]).subscribe(data => {
+      this.trail = data.trails[0];
+    });
     // this.loadmap();
   }
 

@@ -1,5 +1,9 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>{{trailName}}</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -15,11 +19,11 @@
       <ion-label>Details</ion-label>
     </ion-tab-button>
     <ion-tab-button tab="weather">
-      <ion-icon name="film"></ion-icon>
+      <ion-icon name="sunny"></ion-icon>
       <ion-label>Weather</ion-label>
     </ion-tab-button>
     <ion-tab-button tab="rating">
-      <ion-icon name="chatboxes"></ion-icon>
+      <ion-icon name="star"></ion-icon>
       <ion-label>Ratings</ion-label>
     </ion-tab-button>
     <!--<ion-tab-button tab="related">-->
