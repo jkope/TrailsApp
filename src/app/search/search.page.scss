@@ -19,3 +19,22 @@
 .trail-title{
   font-size: 24px;
 }
+
+.card-holder{
+  display:flex;
+  justify-content: center;
+}
+
+.card{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 142.8px;
+}
+.card{
+  button{
+    align-self: flex-end;
+  }
+}

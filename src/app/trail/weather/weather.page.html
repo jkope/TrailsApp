@@ -6,4 +6,12 @@
 
 <ion-content padding>
 
+  <ion-list *ngIf="weather$">
+    <!--${{weather | json}}-->
+    <ion-item *ngFor="let day of weather.list">
+      <ion-title>{{day.weather[0].main}}: {{day.weather[0].description}}</ion-title>
+      <p>{{day.dt | time}}</p>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
