@@ -6,11 +6,17 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TimePipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-    let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     let temp = new Date(value * 1000);
-    let month = months[temp.getMonth()];
-    let day = temp.getDate();
-    return `${month}/${day}`;
+    // console.log(temp.getHours());
+    // temp.setHours((temp.getHours() - (timezone/60)));
+    // console.log(temp);
+    // let time = temp.setTime( temp.getTime() + (temp.getTimezoneOffset()*60*1000) );
+    // console.log(time);
+
+    // let day = temp.getDate();
+    let hour = temp.toLocaleString('en-US', { hour: 'numeric', hour12: true});
+    // temp.setHours(temp.getUTCHours() - ((timezone / 60) * 2));
+    return `${hour}`;
   }
 
 }

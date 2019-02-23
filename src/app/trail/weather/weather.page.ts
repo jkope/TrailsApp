@@ -15,6 +15,10 @@ export class WeatherPage implements OnInit {
   lat;
   weather$;
 
+  slideOpts = {
+    effect: 'flip'
+  };
+
   constructor(
       private route: ActivatedRoute,
       private weather: WeatherService,
@@ -27,11 +31,16 @@ export class WeatherPage implements OnInit {
       this.lng = data.trails[0].longitude;
       this.weather.getForecastByCoordinates(this.lat,this.lng).subscribe(data => {
         for(let i = 0; i < data.list.length; i++){
+          let months = ['Jan', 'Feb', 'Mar', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Dec'];
           let temp = new Date(data.list[i].dt * 1000);
           let date = temp.getDate();
-          data.list[i].dt = date;
+          let month = months[temp.getMonth()];
+          data.list[i].date = month + " " + date;
+          data.list[i].month = month;
         }
-        this.weather$ = _.groupBy(data.list, 'dt');
+        this.weather$ = _.groupBy(data.list, 'date');
+
+        console.log(this.weather$);
       });
     });
   }
