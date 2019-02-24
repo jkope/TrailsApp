@@ -4,6 +4,34 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+
+  <!--<ion-list *ngIf="weather$">-->
+    <!--&lt;!&ndash;${{weather | json}}&ndash;&gt;-->
+    <!--<ion-item *ngFor="let day of weather.list">-->
+      <!--<ion-title>{{day.weather[0].main}}: {{day.weather[0].description}}</ion-title>-->
+      <!--<p>{{day.dt | time}}</p>-->
+    <!--</ion-item>-->
+  <!--</ion-list>-->
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let day of weather$ | keyvalue">
+      <p>Forcast for: {{day.month}} {{day.key}}</p>
+      <div class="card-container">
+        <ion-card *ngFor="let hour of day.value" class="card">
+          <ion-card-header class="card-header">
+            <ion-card-subtitle>
+              {{hour.dt | time}}
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-img src="http://openweathermap.org/img/w/{{hour.weather[0].icon}}.png" class="image"></ion-img>
+          <ion-card-content>
+            <p>{{hour.weather[0].main}}</p>
+            <p>{{hour.weather[0].description}}</p>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <!--<p *ngFor="let hour of day.value">{{hour.dt | time}}</p>-->
+    </ion-slide>
+  </ion-slides>
 
 </ion-content>

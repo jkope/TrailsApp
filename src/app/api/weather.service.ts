@@ -15,7 +15,7 @@ export class WeatherService {
   }
 
   getForecastByCoordinates(lat, lon): Observable<any> {
-    return this.http.get(`${this.baseUrl}2.5/forecast?lat=${lat}&lon=${lon}&appid=${this.apiKey}`);
+    return this.http.get(`${this.baseUrl}2.5/forecast?lat=${lat}&lon=${lon}&appid=${this.apiKey}&units=imperial`);
   }
 
 }
