@@ -13,7 +13,7 @@ import {environment} from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import {AngularFireAuthModule } from 'angularfire2/auth';
-import {Geolocation} from "@ionic-native/geolocation";
+import {Geolocation} from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [AppComponent],
