@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { WeatherPage } from './weather.page';
+import { TimePipe } from './time.pipe';
 
 const routes: Routes = [
   {
@@ -21,6 +22,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [WeatherPage]
+  declarations: [WeatherPage, TimePipe]
 })
 export class WeatherPageModule {}

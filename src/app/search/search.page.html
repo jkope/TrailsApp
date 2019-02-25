@@ -25,28 +25,41 @@
 
 <ion-content padding>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Search by Zip Code</ion-card-subtitle>
-      <!--<ion-card-title>Search by Zip Code</ion-card-title>-->
-    </ion-card-header>
+  <div class="card-holder">
+    <div class="card">
+      <p>Search by Zip Code</p>
+      <ion-input placeholder="Zip Code" type="numbers" [(ngModel)]="zipcode"></ion-input>
+      <ion-button (click)="trailsByZip()" >Search</ion-button>
+    </div>
+    <div class="card">
+      <p>Search by Current Location</p>
+      <ion-button (click)="trailsByGeoLoc()">Search</ion-button>
+    </div>
+    <!--<ion-card>-->
 
-    <ion-card-content>
-      <ion-input placeholder="Zip Code" type="numbers" color="dark"></ion-input>
-    </ion-card-content>
-  </ion-card>
-  <p style="text-align: center">-------OR-------</p>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Search by Current Location</ion-card-subtitle>
-      <!--<ion-card-title>Search by Zip Code</ion-card-title>-->
-    </ion-card-header>
+      <!--<ion-card-header>-->
+        <!--<ion-card-subtitle>Search by Zip Code</ion-card-subtitle>-->
+        <!--&lt;!&ndash;<ion-card-title>Search by Zip Code</ion-card-title>&ndash;&gt;-->
+      <!--</ion-card-header>-->
 
-    <ion-card-content>
-      <ion-button (click)="trailsByGeoLoc()">Get Current Location</ion-button>
-      <!--<ion-button (click)="log()">trails$</ion-button>-->
-    </ion-card-content>
-  </ion-card>
+      <!--<ion-card-content>-->
+        <!--<ion-input placeholder="Zip Code" type="numbers" color="dark"></ion-input>-->
+      <!--</ion-card-content>-->
+    <!--</ion-card>-->
+    <!--&lt;!&ndash;<p style="text-align: center; align-self: center">-OR-</p>&ndash;&gt;-->
+    <!--<ion-card>-->
+      <!--<ion-card-header>-->
+        <!--<ion-card-subtitle>Search by Current Location</ion-card-subtitle>-->
+        <!--&lt;!&ndash;<ion-card-title>Search by Zip Code</ion-card-title>&ndash;&gt;-->
+      <!--</ion-card-header>-->
+
+      <!--<ion-card-content>-->
+        <!--<ion-button (click)="trailsByGeoLoc()" size="small">Get Current Location</ion-button>-->
+        <!--&lt;!&ndash;<ion-button (click)="log()">trails$</ion-button>&ndash;&gt;-->
+      <!--</ion-card-content>-->
+    <!--</ion-card>-->
+  </div>
+
   <div class="cardlist" *ngIf="trails$ | async as trails">
     <!--{{trails | json}}-->
     <ion-card *ngFor="let trail of trails.trails" (click)="goToTrail(trail.id)">

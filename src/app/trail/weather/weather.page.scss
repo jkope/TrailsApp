@@ -1,0 +1,35 @@
+.slides{
+  height: 100%;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+}
+
+.image{
+  max-width: 50px;
+}
+
+.card-header{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.card-content{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.swiper-slide{
+  display:flex;
+  flex-direction: column;
+}
