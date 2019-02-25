@@ -38,6 +38,15 @@ const routes: Routes = [
             loadChildren: './rating/rating.module#RatingPageModule'
           }
         ]
+      },
+      {
+        path: 'map',
+        children: [
+          {
+            path: '',
+            loadChildren: './map/map.module#MapPageModule'
+          }
+        ]
       }
     ],
   }

@@ -2,3 +2,20 @@
   object-fit: cover;
   height: 250px;
 }
+
+.buttonDiv{
+  display:flex;
+  justify-content: space-around;
+}
+.a-button{
+  border: 1px solid black;
+  width: 50%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.info{
+  display: flex;
+  justify-content: space-around;
+}
