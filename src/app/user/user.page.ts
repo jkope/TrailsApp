@@ -15,6 +15,7 @@ private user$;
 
   ngOnInit() {
     this.user$ = this.auth.authenticated();
+    this.auth.authenticated().subscribe(x => console.log(x));
   }
 
   login() {
