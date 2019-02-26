@@ -40,7 +40,7 @@ export class SearchPage implements OnInit {
       const loading = await this.loader.create({
       });
       loading.present().then(_ => {
-          navigator.geolocation.getCurrentPosition(data =>{
+          navigator.geolocation.getCurrentPosition(data => {
               console.log(data.coords.latitude, data.coords.longitude);
               this.trails$ = this.trailsApi.getTrails(data.coords.latitude, data.coords.longitude);
               this.loader.dismiss();

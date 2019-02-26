@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {TrailsApiService} from "../../api/trails-api.service";
+import {ActivatedRoute, Router} from '@angular/router';
+import {TrailsApiService} from '../../api/trails-api.service';
 // import { Map, latLng, tileLayer, Layer, marker } from 'leaflet';
 
 @Component({
@@ -25,6 +25,7 @@ export class DetailsPage implements OnInit {
     console.log(this.route.snapshot.paramMap.get('id'));
     this.trailApi.getTrailsById([Number(this.route.snapshot.paramMap.get('id'))]).subscribe(data => {
       this.trail = data.trails[0];
+      console.log(this.trail);
     });
     // this.loadmap();
   }
