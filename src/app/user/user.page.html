@@ -5,7 +5,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <div class="title">
-      <ion-title>user</ion-title>
+      <ion-title>My Profile</ion-title>
       <div>
         <div class='user' *ngIf="user$ | async as user; else signIn">
           <img class='avatar' [src]='user.photoURL' [alt]="user.displayName">
@@ -24,5 +24,18 @@
 </ion-header>
 
 <ion-content padding>
+  <div *ngIf="user$ | async as user ;else button">
+    <ion-title>{{ user.displayName }}</ion-title>
+  </div>
 
+  <ng-template #button>
+    <div class='cnter'>
+      <div class='btn' (click)='login()'>
+        <div class="image">&nbsp;</div>
+        <div class='text'>
+          Sign in with Google.
+        </div>
+      </div>
+    </div>
+  </ng-template>
 </ion-content>
