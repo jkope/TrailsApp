@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardGuard } from './auth-guard.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +14,9 @@ const routes: Routes = [
   { path: 'trail/:id', loadChildren: './trail/trail.module#TrailPageModule' },
   { path: 'details', loadChildren: './trail/details/details.module#DetailsPageModule' },
   { path: 'weather', loadChildren: './trail/weather/weather.module#WeatherPageModule' },
-  { path: 'rating', loadChildren: './trail/rating/rating.module#RatingPageModule' }
+  { path: 'rating', loadChildren: './trail/rating/rating.module#RatingPageModule' },
+  { path: 'map', loadChildren: './trail/map/map.module#MapPageModule' }
+
 
 
 ];

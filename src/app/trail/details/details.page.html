@@ -5,8 +5,22 @@
 </ion-header>
 
 <ion-content *ngIf="trail">
-  <!--<div id="map" style="width:100%; height:100%;"></div>-->
+
   <ion-img src="{{trail.imgMedium}}" class="main-image"></ion-img>
-  <ion-title>{{trail.name}}</ion-title>
-  <ion-content>{{ trail.summary }}</ion-content>
+  <div class="buttonDiv">
+    <a class="a-button">I've Hiked this</a>
+    <a class="a-button">I want to Hike this</a>
+  </div>
+  <p style="text-align: center">{{trail.summary}}</p>
+  <div class="info">
+    <p>Length: {{trail.length}} miles</p>
+    <p *ngIf="trail.difficulty == 'green'">Difficulty level: 1</p>
+    <p *ngIf="trail.difficulty == 'greenBlue'">Difficulty level: 2</p>
+    <p *ngIf="trail.difficulty == 'blue'">Difficulty level: 3</p>
+    <p *ngIf="trail.difficulty == 'blueBlack'">Difficulty level: 4</p>
+    <p *ngIf="trail.difficulty == 'black'">Difficulty level: 5</p>
+  </div>
+  <div *ngIf="trail.conditionStatus != 'Unknown'">
+    {{trail.conditions | json}}
+  </div>
 </ion-content>
