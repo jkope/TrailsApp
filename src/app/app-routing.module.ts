@@ -10,7 +10,7 @@ const routes: Routes = [
   },
 
   { path: 'search', loadChildren: './search/search.module#SearchPageModule' },
-  { path: 'user', loadChildren: './user/user.module#UserPageModule', canActivate: [AuthGuardGuard] },
+  { path: 'user', loadChildren: './user/user.module#UserPageModule' },
   { path: 'info', loadChildren: './user/info/info.module#InfoPageModule' },
   { path: 'trail/:id', loadChildren: './trail/trail.module#TrailPageModule' },
   { path: 'details', loadChildren: './trail/details/details.module#DetailsPageModule' },
