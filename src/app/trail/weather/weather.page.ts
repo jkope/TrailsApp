@@ -18,7 +18,7 @@ export class WeatherPage implements OnInit {
   lng;
   lat;
   weather$;
-  lineChart;
+  lineChart = [];
 
   slideOpts = {
     effect: 'flip'
@@ -72,7 +72,7 @@ export class WeatherPage implements OnInit {
       // console.log(this.weather$);
       let numIndex = 0;
         _.forEach(this.weather$, (day)=>{
-          this.lineChart = new Chart(data._results[numIndex].nativeElement, {
+          this.lineChart[numIndex] = new Chart(data._results[numIndex].nativeElement, {
 
             type: 'line',
             data: {
@@ -102,11 +102,10 @@ export class WeatherPage implements OnInit {
                 }
               ],
             },
-            events: ['click'],
-            onClick: function Click(data){
-              console.log(data);
+            options: {
+              events: ['click'],
+              onClick:  this.Click(data)
             },
-
           });
           numIndex++;
         });
@@ -120,8 +119,8 @@ export class WeatherPage implements OnInit {
 
   }
 
-  CheckData(data){
-    console.log(data);
+  Click(data){
+
   }
 
 
