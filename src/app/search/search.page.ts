@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TrailsApiService } from '../api/trails-api.service';
 import { AuthService } from '../api/auth.service';
-import {Router} from "@angular/router";
-import {LoadingController} from "@ionic/angular";
-import {MapquestService} from "../api/mapquest.service";
+import {Router} from '@angular/router';
+import {LoadingController} from '@ionic/angular';
+import {MapquestService} from '../api/mapquest.service';
 
 @Component({
   selector: 'app-search',
@@ -40,14 +40,14 @@ export class SearchPage implements OnInit {
       const loading = await this.loader.create({
       });
       loading.present().then(_ => {
-          navigator.geolocation.getCurrentPosition(data =>{
+          navigator.geolocation.getCurrentPosition(data => {
               console.log(data.coords.latitude, data.coords.longitude);
               this.trails$ = this.trailsApi.getTrails(data.coords.latitude, data.coords.longitude);
               this.loader.dismiss();
               // this.router.navigate(['trail', 123, 'details']);
           }, error => {
               console.log(error);
-          })
+          });
       });
     // get user current lat and lon and use in the line below
     // this.trails$ = this.trails.getTrails(40.3769, -111.789);
@@ -63,16 +63,16 @@ export class SearchPage implements OnInit {
 
   }
 
-  async trailsByZip(){
+  async trailsByZip() {
       const loading = await this.loader.create({});
 
       loading.present().then(_ => {
           this.mapApi.getLatLonByZip(this.zipcode).subscribe(data => {
-              let lat = data.results[0].locations[0].latLng.lat;
-              let long = data.results[0].locations[0].latLng.lng;
-              this.trails$ = this.trailsApi.getTrails(lat,long);
+              const lat = data.results[0].locations[0].latLng.lat;
+              const long = data.results[0].locations[0].latLng.lng;
+              this.trails$ = this.trailsApi.getTrails(lat, long);
               this.loader.dismiss();
-          })
+          });
           // navigator.geolocation.getCurrentPosition(data =>{
           //     console.log(data.coords.latitude, data.coords.longitude);
           //     this.trails$ = this.trailsApi.getTrails(data.coords.latitude, data.coords.longitude);
@@ -84,7 +84,7 @@ export class SearchPage implements OnInit {
       });
   }
 
-  goToTrail(id){
+  goToTrail(id) {
       this.router.navigate(['trail', id, 'details']);
   }
 
