@@ -8,8 +8,8 @@
 
   <ion-img src="{{trail.imgMedium}}" class="main-image"></ion-img>
   <div class="buttonDiv">
-    <a class="a-button">I've Hiked this</a>
-    <a class="a-button">I want to Hike this</a>
+    <a class="a-button" (click)=hiked()>I've Hiked this</a>
+    <a class="a-button" (click)=wantHike()>I want to Hike this</a>
   </div>
   <p style="text-align: center">{{trail.summary}}</p>
   <div class="info">
