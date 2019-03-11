@@ -26,6 +26,9 @@
 <ion-content padding>
   <div *ngIf="user$ | async as user ;else button">
     <ion-title>{{ user.displayName }}</ion-title>
+    <div *ngFor='let trail of hiked$ | async'>
+      <p>{{ trail.name }}</p>
+    </div>
   </div>
 
   <ng-template #button>
