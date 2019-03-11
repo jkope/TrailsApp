@@ -11,6 +11,14 @@
     <a class="a-button" (click)=hiked()>I've Hiked this</a>
     <a class="a-button" (click)=wantHike()>I want to Hike this</a>
   </div>
+  <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="friends">
+      <ion-label>I've Hiked this</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="enemies">
+      <ion-label>I want to Hike this</ion-label>
+    </ion-segment-button>
+  </ion-segment>
   <p style="text-align: center">{{trail.summary}}</p>
   <div class="info">
     <p>Length: {{trail.length}} miles</p>
