@@ -51,7 +51,7 @@ export class AuthService {
     this.unsubscribe$.complete();
   }
 
-  authenticated(): Observable<User> {
+  authenticated(): Observable<any> {
     return this.afAuth.authState;
   }
 

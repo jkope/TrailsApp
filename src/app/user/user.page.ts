@@ -20,7 +20,7 @@ private hiked$: Observable <Trail[]>;
 
   ngOnInit() {
     this.user$ = this.auth.authenticated();
-    // this.hiked$ = this.firebase.getHasHiked();
+    this.hiked$ = this.firebase.getHasHiked();
     this.firebase.getHasHiked().subscribe(x => {
       console.log(x);
     });
