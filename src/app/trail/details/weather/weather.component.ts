@@ -1,19 +1,18 @@
-import {Component, OnInit, ViewChild, AfterViewInit, ViewChildren} from '@angular/core';
+import { Component, OnInit, ViewChildren } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {WeatherService} from "../../api/weather.service";
-import {TrailsApiService} from "../../api/trails-api.service";
+import {WeatherService} from "../../../api/weather.service";
+import {TrailsApiService} from "../../../api/trails-api.service";
 import * as _ from 'lodash'
-import {TimePipe} from "../details/weather/time.pipe";
+import {TimePipe} from "./time.pipe";
 import { Chart } from 'chart.js'
-import {checkAndUpdateTextDynamic} from "@angular/core/src/view/text";
-import {Time} from "@angular/common";
 
 @Component({
   selector: 'app-weather',
-  templateUrl: './weather.page.html',
-  styleUrls: ['./weather.page.scss'],
+  templateUrl: './weather.component.html',
+  styleUrls: ['./weather.component.scss']
 })
-export class WeatherPage implements OnInit {
+export class WeatherComponent implements OnInit {
+
   @ViewChildren('lineCanvas') lineCanvas;
   lng;
   lat;
@@ -63,65 +62,61 @@ export class WeatherPage implements OnInit {
       });
     });
   }
-
-  ngAfterViewInit(){
+  ngAfterViewInit() {
 
     // console.log(this.lineCanvas);
-    this.lineCanvas.changes.subscribe(data =>{
+    this.lineCanvas.changes.subscribe(data => {
       // console.log(data._results[0]);
       // console.log(this.weather$);
       let numIndex = 0;
-        _.forEach(this.weather$, (day)=>{
-          this.lineChart[numIndex] = new Chart(data._results[numIndex].nativeElement, {
+      _.forEach(this.weather$, (day) => {
+        this.lineChart[numIndex] = new Chart(data._results[numIndex].nativeElement, {
 
-            type: 'line',
-            data: {
-              labels: day.tempLabel,
-              datasets: [
-                {
-                  label: "Temperature",
-                  fill: false,
-                  lineTension: 0.1,
-                  backgroundColor: "rgba(75,192,192,0.4)",
-                  borderColor: "rgba(75,192,192,1)",
-                  borderCapStyle: 'butt',
-                  borderDash: [],
-                  borderDashOffset: 0.0,
-                  borderJoinStyle: 'miter',
-                  pointBorderColor: "rgba(75,192,192,1)",
-                  pointBackgroundColor: "#fff",
-                  pointBorderWidth: 1,
-                  pointHoverRadius: 5,
-                  pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                  pointHoverBorderColor: "rgba(220,220,220,1)",
-                  pointHoverBorderWidth: 2,
-                  pointRadius: 1,
-                  pointHitRadius: 10,
-                  data: day.tempData,
-                  spanGaps: false,
-                }
-              ],
-            },
-            options: {
-              events: ['click'],
-              onClick:  this.Click(data)
-            },
-          });
-          numIndex++;
+          type: 'line',
+          data: {
+            labels: day.tempLabel,
+            datasets: [
+              {
+                label: "Temperature",
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: "rgba(75,192,192,0.4)",
+                borderColor: "rgba(75,192,192,1)",
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: "rgba(75,192,192,1)",
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: day.tempData,
+                spanGaps: false,
+              }
+            ],
+          },
+          options: {
+            events: ['click'],
+            onClick: this.Click(data)
+          },
         });
-
+        numIndex++;
+      });
 
 
     });
     // this.lineCanvas.forEach(instance => {
     //   console.log(instance);
     // });
-
   }
 
   Click(data){
 
   }
-
 
 }

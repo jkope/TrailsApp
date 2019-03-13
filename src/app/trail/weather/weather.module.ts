@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { WeatherPage } from './weather.page';
-import { TimePipe } from './time.pipe';
+import { TimePipe } from '../details/weather/time.pipe';
 
 const routes: Routes = [
   {
