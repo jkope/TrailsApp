@@ -1,5 +1,5 @@
 export interface Trail {
-    trailID: number;
+    id: number;
     name: string;
     type: string;
     summary: string;
