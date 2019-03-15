@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {TrailsApiService} from '../../api/trails-api.service';
 // import { Map, latLng, tileLayer, Layer, marker } from 'leaflet';
 import L from 'leaflet';
+import { FirebaseService } from '../../api/firebase.service';
 
 @Component({
   selector: 'app-details',
@@ -20,6 +21,7 @@ export class DetailsPage implements OnInit {
       private router: Router,
       private route: ActivatedRoute,
       private trailApi: TrailsApiService,
+      private firebase: FirebaseService
   ) { }
 
   ngOnInit() {
@@ -32,6 +34,12 @@ export class DetailsPage implements OnInit {
 
   }
 
+  hiked() {
+    this.firebase.pushHasHiked(this.trail);
+  }
+
+  wantHike() {
+  }
 
 
 }
