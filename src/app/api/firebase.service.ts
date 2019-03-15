@@ -24,7 +24,7 @@ export class FirebaseService {
   }
 
   pushHasHiked(trail: Trail): void {
-    this.db.collection(`users/${this.afAuth.auth.currentUser.uid}/hasHiked`).doc(String(trail.trailID)).set(trail);
+    this.db.collection(`users/${this.afAuth.auth.currentUser.uid}/hasHiked`).doc(String(trail.id)).set(trail);
   }
   getHasHiked(): Observable<Trail []> {
     return this.db.collection<Trail>(`users/${this.afAuth.auth.currentUser.uid}/hasHiked`).valueChanges();
@@ -37,7 +37,7 @@ export class FirebaseService {
   }
 
   pushToHike(trail: Trail): void {
-    this.db.collection(`users/${this.afAuth.auth.currentUser.uid}/toHike`).doc(String(trail.trailID)).set(trail);
+    this.db.collection(`users/${this.afAuth.auth.currentUser.uid}/toHike`).doc(String(trail.id)).set(trail);
   }
   getToHike(): Observable<Trail[]> {
     return this.db.collection<Trail>(`users/${this.afAuth.auth.currentUser.uid}/toHike`).valueChanges();

@@ -29,3 +29,11 @@
     background-color: #4285f4;
 
 }
+.lists{
+    display: flex;
+    justify-content: space-around;
+}
+.select :hover{
+    cursor: pointer;
+    color: blue;
+}

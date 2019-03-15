@@ -25,7 +25,7 @@ export class DetailsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.route.snapshot.paramMap.get('id'));
+    // console.log(this.route.snapshot.paramMap.get('id'));
     this.trailApi.getTrailsById([Number(this.route.snapshot.paramMap.get('id'))]).subscribe(data => {
       this.trail = data.trails[0];
       console.log(this.trail);
@@ -34,12 +34,16 @@ export class DetailsPage implements OnInit {
 
   }
 
-  hiked() {
-    this.firebase.pushHasHiked(this.trail);
+  segmentChanged (event) {
+    if (event.currentTarget.value === 'Hiked') {
+      this.firebase.pushHasHiked(this.trail);
+      this.firebase.removeToHike(this.trail.id);
+    } else if (event.currentTarget.value === 'toHike') {
+      this.firebase.pushToHike(this.trail);
+      this.firebase.removeHasHiked(this.trail.id);
+    }
   }
 
-  wantHike() {
-  }
 
 
 }

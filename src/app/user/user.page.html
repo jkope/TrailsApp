@@ -26,8 +26,27 @@
 <ion-content padding>
   <div *ngIf="user$ | async as user ;else button">
     <ion-title>{{ user.displayName }}</ion-title>
-    <div *ngFor='let trail of hiked$ | async'>
-      <p>{{ trail.name }}</p>
+    <div class="lists">
+      <div>
+        <ion-list *ngIf='hiked$ | async as hiked'>
+          <ion-list-header>
+            <ion-label>Hiked</ion-label>
+          </ion-list-header>
+          <ion-item class='select' *ngFor='let trail of hiked'>
+            <ion-label  (click)=goToTrail(trail.id)>{{ trail.name }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div>
+        <ion-list *ngIf='toHike$ | async as toHike'>
+          <ion-list-header>
+            <ion-label>Want to Hike</ion-label>
+          </ion-list-header>
+          <ion-item class="select" *ngFor='let trail of toHike'>
+            <ion-label  (click)=goToTrail(trail.id)>{{ trail.name }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
     </div>
   </div>
 
