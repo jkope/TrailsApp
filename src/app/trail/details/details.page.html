@@ -7,15 +7,15 @@
 <ion-content *ngIf="trail">
 
   <ion-img src="{{trail.imgMedium}}" class="main-image"></ion-img>
-  <div class="buttonDiv">
-    <a class="a-button" (click)=hiked()>I've Hiked this</a>
-    <a class="a-button" (click)=wantHike()>I want to Hike this</a>
-  </div>
-  <ion-segment (ionChange)="segmentChanged($event)">
-    <ion-segment-button value="friends">
+  <!--<div class="buttonDiv">-->
+    <!--<a class="a-button">I've Hiked this</a>-->
+    <!--<a class="a-button">I want to Hike this</a>-->
+  <!--</div>-->
+  <ion-segment (ionChange)="segmentChanged($event)" mode="ios" ios>
+    <ion-segment-button value="Hiked">
       <ion-label>I've Hiked this</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="enemies">
+    <ion-segment-button value="toHike">
       <ion-label>I want to Hike this</ion-label>
     </ion-segment-button>
   </ion-segment>
@@ -28,7 +28,5 @@
     <p *ngIf="trail.difficulty == 'blueBlack'">Difficulty level: 4</p>
     <p *ngIf="trail.difficulty == 'black'">Difficulty level: 5</p>
   </div>
-  <div *ngIf="trail.conditionStatus != 'Unknown'">
-    {{trail.conditions | json}}
-  </div>
+  <app-weather></app-weather>
 </ion-content>
