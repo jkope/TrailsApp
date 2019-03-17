@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { User } from 'firebase';
+// import { User } from 'firebase';
+import { User } from '../shared/user';
 import { Observable } from 'rxjs';
 import { Trail } from '../shared/trail';
 
