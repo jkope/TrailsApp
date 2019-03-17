@@ -3,11 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {TrailsApiService} from '../../api/trails-api.service';
 // import { Map, latLng, tileLayer, Layer, marker } from 'leaflet';
 import L from 'leaflet';
-<<<<<<< HEAD
-import {FirebaseService} from "../../api/firebase.service";
-=======
 import { FirebaseService } from '../../api/firebase.service';
->>>>>>> e800f8ed18d93008869184909adf7d78b8801e90
 
 @Component({
   selector: 'app-details',
@@ -29,7 +25,7 @@ export class DetailsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.route.snapshot.paramMap.get('id'));
+    // console.log(this.route.snapshot.paramMap.get('id'));
     this.trailApi.getTrailsById([Number(this.route.snapshot.paramMap.get('id'))]).subscribe(data => {
       this.trail = data.trails[0];
       console.log(this.trail);
@@ -38,16 +34,16 @@ export class DetailsPage implements OnInit {
 
   }
 
-  segmentChanged(event) {
-    console.log(event.detail.value);
-    if(event.detail.value == 'toHike'){
-      this.firebase.pushToHike(this.trail);
-    }
-    else if(event.detail.value == 'Hiked'){
+  segmentChanged (event) {
+    if (event.currentTarget.value === 'Hiked') {
       this.firebase.pushHasHiked(this.trail);
+      this.firebase.removeToHike(this.trail.id);
+    } else if (event.currentTarget.value === 'toHike') {
+      this.firebase.pushToHike(this.trail);
+      this.firebase.removeHasHiked(this.trail.id);
     }
-
   }
+  
 
 
 
