@@ -21,7 +21,7 @@ export class DetailsPage implements OnInit {
       private router: Router,
       private route: ActivatedRoute,
       private trailApi: TrailsApiService,
-      private firebase: FirebaseService
+      private firebase: FirebaseService,
   ) { }
 
   ngOnInit() {
@@ -43,6 +43,7 @@ export class DetailsPage implements OnInit {
       this.firebase.removeHasHiked(this.trail.id);
     }
   }
+  
 
 
 
