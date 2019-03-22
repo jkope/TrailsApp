@@ -28,7 +28,7 @@ export class DetailsPage implements OnInit {
     // console.log(this.route.snapshot.paramMap.get('id'));
     this.trailApi.getTrailsById([Number(this.route.snapshot.paramMap.get('id'))]).subscribe(data => {
       this.trail = data.trails[0];
-      console.log(this.trail);
+      // console.log(this.trail);
     });
 
 
