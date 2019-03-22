@@ -5,15 +5,14 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <div class='title'>
-    <ion-title>Search</ion-title>
+      <ion-title>Search</ion-title>
       <div>
         <div class='user' *ngIf="user$ | async as user; else signIn">
-          <img class ='avatar' [src]='user.photoURL' [alt]="user.displayName">
-          <!-- <div>{{ user.displayName }}</div> -->
+          <img class='avatar' [src]='user.photoURL' [alt]="user.displayName">
           <ion-icon name="log-out" size="large" (click)='logOut()'></ion-icon>
         </div>
-        <ng-template #signIn >
-          <div (click)="login()"> 
+        <ng-template #signIn>
+          <div (click)="login()">
             Sign in
             <ion-icon name="log-in" size="large"></ion-icon>
           </div>
@@ -26,37 +25,39 @@
 <ion-content padding>
 
   <div class="card-holder">
-    <div class="card">
-      <p>Search by Zip Code</p>
-      <ion-input placeholder="Zip Code" type="numbers" [(ngModel)]="zipcode"></ion-input>
-      <ion-button (click)="trailsByZip()" >Search</ion-button>
-    </div>
-    <div class="card">
-      <p>Search by Current Location</p>
-      <ion-button (click)="trailsByGeoLoc()">Search</ion-button>
+    <div class="searcher">
+      <div>
+        <form action="submit" (submit)="trailsByZip()">
+          <ion-label position="stacked">Search by Zip Code</ion-label>
+          <ion-input name="zip" placeholder="Zip Code" type="numbers" [(ngModel)]="zipcode"></ion-input>
+        </form>
+      </div>
+      <div>
+        <ion-button (click)="trailsByGeoLoc()">Search byCurrent Location</ion-button>
+      </div>
     </div>
     <!--<ion-card>-->
 
-      <!--<ion-card-header>-->
-        <!--<ion-card-subtitle>Search by Zip Code</ion-card-subtitle>-->
-        <!--&lt;!&ndash;<ion-card-title>Search by Zip Code</ion-card-title>&ndash;&gt;-->
-      <!--</ion-card-header>-->
+    <!--<ion-card-header>-->
+    <!--<ion-card-subtitle>Search by Zip Code</ion-card-subtitle>-->
+    <!--&lt;!&ndash;<ion-card-title>Search by Zip Code</ion-card-title>&ndash;&gt;-->
+    <!--</ion-card-header>-->
 
-      <!--<ion-card-content>-->
-        <!--<ion-input placeholder="Zip Code" type="numbers" color="dark"></ion-input>-->
-      <!--</ion-card-content>-->
+    <!--<ion-card-content>-->
+    <!--<ion-input placeholder="Zip Code" type="numbers" color="dark"></ion-input>-->
+    <!--</ion-card-content>-->
     <!--</ion-card>-->
     <!--&lt;!&ndash;<p style="text-align: center; align-self: center">-OR-</p>&ndash;&gt;-->
     <!--<ion-card>-->
-      <!--<ion-card-header>-->
-        <!--<ion-card-subtitle>Search by Current Location</ion-card-subtitle>-->
-        <!--&lt;!&ndash;<ion-card-title>Search by Zip Code</ion-card-title>&ndash;&gt;-->
-      <!--</ion-card-header>-->
+    <!--<ion-card-header>-->
+    <!--<ion-card-subtitle>Search by Current Location</ion-card-subtitle>-->
+    <!--&lt;!&ndash;<ion-card-title>Search by Zip Code</ion-card-title>&ndash;&gt;-->
+    <!--</ion-card-header>-->
 
-      <!--<ion-card-content>-->
-        <!--<ion-button (click)="trailsByGeoLoc()" size="small">Get Current Location</ion-button>-->
-        <!--&lt;!&ndash;<ion-button (click)="log()">trails$</ion-button>&ndash;&gt;-->
-      <!--</ion-card-content>-->
+    <!--<ion-card-content>-->
+    <!--<ion-button (click)="trailsByGeoLoc()" size="small">Get Current Location</ion-button>-->
+    <!--&lt;!&ndash;<ion-button (click)="log()">trails$</ion-button>&ndash;&gt;-->
+    <!--</ion-card-content>-->
     <!--</ion-card>-->
   </div>
 
