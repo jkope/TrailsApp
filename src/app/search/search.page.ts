@@ -26,6 +26,7 @@ export class SearchPage implements OnInit {
 
   ngOnInit() {
     this.user$ = this.auth.authenticated();
+    this.trailsByZip();
   }
 
   login() {
@@ -41,13 +42,14 @@ export class SearchPage implements OnInit {
       });
       loading.present().then(_ => {
           navigator.geolocation.getCurrentPosition(data => {
-              console.log(data.coords.latitude, data.coords.longitude);
+              // console.log( data, data.coords.latitude, data.coords.longitude);
               this.trails$ = this.trailsApi.getTrails(data.coords.latitude, data.coords.longitude);
               this.loader.dismiss();
               // this.router.navigate(['trail', 123, 'details']);
           }, error => {
               console.log(error);
           });
+          this.zipcode = '';
       });
     // get user current lat and lon and use in the line below
     // this.trails$ = this.trails.getTrails(40.3769, -111.789);
@@ -67,7 +69,7 @@ export class SearchPage implements OnInit {
       const loading = await this.loader.create({});
 
       loading.present().then(_ => {
-          this.mapApi.getLatLonByZip(this.zipcode).subscribe(data => {
+          this.mapApi.getLatLonByZip(this.zipcode ? this.zipcode : 84003).subscribe(data => {
               const lat = data.results[0].locations[0].latLng.lat;
               const long = data.results[0].locations[0].latLng.lng;
               this.trails$ = this.trailsApi.getTrails(lat, long);

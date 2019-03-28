@@ -30,7 +30,7 @@ export class DetailsPage implements OnInit {
     // console.log(this.route.snapshot.paramMap.get('id'));
     this.trailApi.getTrailsById([this.id]).subscribe(data => {
       this.trail = data.trails[0];
-      console.log(this.trail);
+      // console.log(this.trail);
     });
     if(this.firebase.getHasHikedById(this.id)){
         this.segmentValue = 'Hiked';

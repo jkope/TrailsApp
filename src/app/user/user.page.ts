@@ -14,6 +14,9 @@ export class UserPage implements OnInit {
 private user$;
 private hiked$: Observable <Trail[]>;
 private toHike$: Observable <Trail[]>;
+private Vfeet = 0;
+private distance = 0;
+
 
   constructor(
     private auth: AuthService,
@@ -27,6 +30,12 @@ private toHike$: Observable <Trail[]>;
     this.toHike$ = this.firebase.getToHike();
     this.firebase.getHasHiked().subscribe(x => {
       console.log(x);
+    });
+    this.firebase.getHasHiked().subscribe( x => {
+      x.map((trail) => {
+        this.Vfeet += trail.ascent;
+        this.distance += trail.length;
+      });
     });
   }
 

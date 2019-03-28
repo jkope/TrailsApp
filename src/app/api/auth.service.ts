@@ -26,6 +26,7 @@ export class AuthService {
   login() {
     return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
       .then(authUserData => {
+        console.log(authUserData);
         this.userData.id = authUserData.user.uid;
         this.userData.name = authUserData.user.displayName;
         this.firebase.getUserData().pipe(
@@ -34,7 +35,7 @@ export class AuthService {
             if (!userData) {
               this.firebase.addUser({
                 name: this.userData.name,
-                id: this.userData.id
+                id: this.userData.id,
               });
             }
           })

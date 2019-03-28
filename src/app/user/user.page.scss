@@ -33,7 +33,15 @@
     display: flex;
     justify-content: space-around;
 }
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 .select :hover{
     cursor: pointer;
     color: blue;
+}
+.stars {
+    overflow: hidden;
 }
