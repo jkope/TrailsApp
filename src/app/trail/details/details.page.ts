@@ -15,7 +15,9 @@ export class DetailsPage implements OnInit {
 
   // lat = 40.3769;
   // lng = -111.789;
+  id = Number(this.route.snapshot.paramMap.get('id'));
   trail;
+  segmentValue;
 
   constructor(
       private router: Router,
@@ -26,12 +28,21 @@ export class DetailsPage implements OnInit {
 
   ngOnInit() {
     // console.log(this.route.snapshot.paramMap.get('id'));
-    this.trailApi.getTrailsById([Number(this.route.snapshot.paramMap.get('id'))]).subscribe(data => {
+    this.trailApi.getTrailsById([this.id]).subscribe(data => {
       this.trail = data.trails[0];
       // console.log(this.trail);
     });
-
-
+    if(this.firebase.getHasHikedById(this.id)){
+        this.segmentValue = 'Hiked';
+        console.log(this.segmentValue);
+    }
+    else {
+        if(this.firebase.getToHikeById(this.id)){
+            this.segmentValue = 'toHike';
+            console.log(this.segmentValue);
+        }
+    }
+    console.log(this.segmentValue);
   }
 
   segmentChanged (event) {
@@ -43,7 +54,7 @@ export class DetailsPage implements OnInit {
       this.firebase.removeHasHiked(this.trail.id);
     }
   }
-  
+
 
 
 

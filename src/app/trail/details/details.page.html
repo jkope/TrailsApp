@@ -11,7 +11,7 @@
     <!--<a class="a-button">I've Hiked this</a>-->
     <!--<a class="a-button">I want to Hike this</a>-->
   <!--</div>-->
-  <ion-segment (ionChange)="segmentChanged($event)" mode="ios" ios>
+  <ion-segment (ionChange)="segmentChanged($event)" mode="ios" (ngModel)="segmentValue">
     <ion-segment-button value="Hiked">
       <ion-label>I've Hiked this</ion-label>
     </ion-segment-button>
