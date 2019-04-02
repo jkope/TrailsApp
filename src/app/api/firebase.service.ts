@@ -29,8 +29,10 @@ export class FirebaseService {
   getHasHiked(): Observable<Trail []> {
     return this.db.collection<Trail>(`users/${this.afAuth.auth.currentUser.uid}/hasHiked`).valueChanges();
   }
-  getHasHikedById(trailID: number): Observable<Trail> {
-    return this.db.collection<Trail>(`users/${this.afAuth.auth.currentUser.uid}/hasHiked`).doc<Trail>(String(trailID)).valueChanges();
+  getHasHikedById(trailID: number): boolean {
+    this.db.collection(`users/${this.afAuth.auth.currentUser.uid}/hasHiked`).doc(String(trailID)).get().toPromise().then(doc => {
+      return doc.exists;
+    });
   }
   removeHasHiked(trailID: number): Promise<void> {
     return this.db.collection(`users/${this.afAuth.auth.currentUser.uid}/hasHiked`).doc(String(trailID)).delete();
@@ -42,8 +44,10 @@ export class FirebaseService {
   getToHike(): Observable<Trail[]> {
     return this.db.collection<Trail>(`users/${this.afAuth.auth.currentUser.uid}/toHike`).valueChanges();
   }
-  getToHikeById(trailID: number): Observable<Trail> {
-    return this.db.collection<Trail>(`users/${this.afAuth.auth.currentUser.uid}/toHike`).doc<Trail>(String(trailID)).valueChanges();
+  getToHikeById(trailID: number): boolean {
+    this.db.collection<Trail>(`users/${this.afAuth.auth.currentUser.uid}/toHike`).doc<Trail>(String(trailID)).get().toPromise().then(doc => {
+      return doc.exists;
+    });
   }
   removeToHike(hikeID: number): Promise<void> {
     return this.db.collection(`users/${this.afAuth.auth.currentUser.uid}/toHike`).doc(String(hikeID)).delete();
