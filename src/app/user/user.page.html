@@ -31,10 +31,20 @@
           <ion-list-header>
             <ion-label>Hiked</ion-label>
           </ion-list-header>
-          <ion-item class='select' *ngFor='let trail of hiked'>
+          <ion-card class='select' *ngFor='let trail of hiked'>
+            <img class='thumb' [src]=trail.imgSmall alt="">
             <div>
               <div>
                 <h2 (click)=goToTrail(trail.id)>{{ trail.name }}</h2>
+              </div>
+              <div class='stars' [ngStyle]="{ 'width' : trail.stars*14+'px'}">
+                <div class="container">
+                  <ion-icon class="star" name='star'></ion-icon>
+                  <ion-icon class="star" name='star'></ion-icon>
+                  <ion-icon class="star" name='star'></ion-icon>
+                  <ion-icon class="star" name='star'></ion-icon>
+                  <ion-icon class="star" name='star'></ion-icon>
+                </div>
               </div>
               <div>
                 <ion-chip>
@@ -45,20 +55,9 @@
                   <ion-label>Vertical Gain <div>{{ trail.ascent }}</div>
                   </ion-label>
                 </ion-chip>
-                <ion-chip>
-                  <ion-label>Average Rating
-                    <div class='stars' [ngStyle]="{ 'width' : trail.stars*14+'px'}">
-                      <ion-icon name='star'></ion-icon>
-                      <ion-icon name='star'></ion-icon>
-                      <ion-icon name='star'></ion-icon>
-                      <ion-icon name='star'></ion-icon>
-                      <ion-icon name='star'></ion-icon>
-                    </div>
-                  </ion-label>
-                </ion-chip>
               </div>
             </div>
-          </ion-item>
+          </ion-card>
           <ion-item>
             <ion-label>Totals</ion-label>
             <ion-chip>
