@@ -29,7 +29,7 @@ export class FirebaseService {
   getHasHiked(): Observable<Trail []> {
     return this.db.collection<Trail>(`users/${this.afAuth.auth.currentUser.uid}/hasHiked`).valueChanges();
   }
-  getHasHikedById(trailID: number): boolean {
+  getHasHikedById(trailID: number): any {
     this.db.collection(`users/${this.afAuth.auth.currentUser.uid}/hasHiked`).doc(String(trailID)).get().toPromise().then(doc => {
       return doc.exists;
     });
@@ -44,7 +44,8 @@ export class FirebaseService {
   getToHike(): Observable<Trail[]> {
     return this.db.collection<Trail>(`users/${this.afAuth.auth.currentUser.uid}/toHike`).valueChanges();
   }
-  getToHikeById(trailID: number): boolean {
+  getToHikeById(trailID: number): any {
+    // tslint:disable-next-line:max-line-length
     this.db.collection<Trail>(`users/${this.afAuth.auth.currentUser.uid}/toHike`).doc<Trail>(String(trailID)).get().toPromise().then(doc => {
       return doc.exists;
     });

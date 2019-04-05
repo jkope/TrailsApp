@@ -38,10 +38,36 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+.select {
+    padding: 1em;
+    display: flex;
+    flex-wrap: nowrap;
+}
 .select :hover{
     cursor: pointer;
-    color: blue;
+    // color: blue;
+}
+.container {
+    display: flex;
+    flex-wrap: nowrap;
 }
 .stars {
     overflow: hidden;
+}
+.star {
+    min-width: 14px;
+}
+.thumb {
+    width: 70px;
+}
+.nowrap {
+    color: rgb(107, 107, 4);
+    display: flex;
+}
+.pad {
+    padding-left: 10px;
+}
+.box {
+    width: 100%;
 }

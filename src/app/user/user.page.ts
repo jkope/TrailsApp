@@ -14,8 +14,12 @@ export class UserPage implements OnInit {
 private user$;
 private hiked$: Observable <Trail[]>;
 private toHike$: Observable <Trail[]>;
-private Vfeet = 0;
-private distance = 0;
+private Vfeet;
+private distance;
+private showHiked = false;
+private showToHike = false;
+private trailCount;
+private big;
 
 
   constructor(
@@ -25,13 +29,14 @@ private distance = 0;
   ) { }
 
   ngOnInit() {
+    window.screen.width > 700 ? this.big = true : this.big = false;
     this.user$ = this.auth.authenticated();
     this.hiked$ = this.firebase.getHasHiked();
     this.toHike$ = this.firebase.getToHike();
-    this.firebase.getHasHiked().subscribe(x => {
-      console.log(x);
-    });
     this.firebase.getHasHiked().subscribe( x => {
+      this.trailCount = x.length;
+      this.Vfeet = 0;
+      this.distance = 0;
       x.map((trail) => {
         this.Vfeet += trail.ascent;
         this.distance += trail.length;
