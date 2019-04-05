@@ -4,8 +4,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content *ngIf="trail">
 
-  
+  <ion-img src="{{trail.imgMedium}}" class="main-image"></ion-img>
+  <p style="text-align: center">{{trail.summary}}</p>
+
+  <div>
+    <form (ngSubmit)="submitForm()">
+      <ion-label>Rate and Comment</ion-label>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="rate" name="rate"></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-label>Description</ion-label> -->
+        <ion-textarea [(ngModel)]="comment" placeholder="Leave a comment here..." name="comment"></ion-textarea>
+      </ion-item>
+      <ion-button ion-button type="submit" block>Submit</ion-button>
+    </form>
+  </div>
+
+
 
 </ion-content>
