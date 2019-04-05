@@ -46,7 +46,7 @@
 }
 .select :hover{
     cursor: pointer;
-    color: blue;
+    // color: blue;
 }
 .container {
     display: flex;
@@ -60,4 +60,14 @@
 }
 .thumb {
     width: 70px;
+}
+.nowrap {
+    color: rgb(107, 107, 4);
+    display: flex;
+}
+.pad {
+    padding-left: 10px;
+}
+.box {
+    width: 100%;
 }
