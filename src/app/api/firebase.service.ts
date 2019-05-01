@@ -63,8 +63,8 @@ export class FirebaseService {
   // comment services
 
   addTrail(trailId, comment: any, userID: string): void {
-    this.db.collection(`allComments`).doc(`${trailId}`).set(trailId).then(ignoreVar => {
-      this.db.collection(`allComments/${trailId}/comments`).doc(`${userID}`).set(comment);
+    this.db.collection(`allComments`).doc(`${trailId.id}`).set(trailId).then(ignoreVar => {
+      this.db.collection(`allComments/${trailId.id}/comments`).doc(`${this.afAuth.auth.currentUser.uid}`).set(comment);
     });
   }
   getCommentsFor(trailId: number): Observable<string[]> {
