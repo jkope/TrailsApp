@@ -59,4 +59,25 @@ export class FirebaseService {
     return this.db.collection(`users/${this.afAuth.auth.currentUser.uid}/hasHiked`).doc<Trail>(`${trailID}`).valueChanges();
   }
 
+
+  // comment services
+
+  addTrail(trailId, comment: any, userID: string): void {
+    this.db.collection(`allComments`).doc(`${trailId}`).set(trailId).then(ignoreVar => {
+      this.db.collection(`allComments/${trailId}/comments`).doc(`${userID}`).set(comment);
+    });
+  }
+  getCommentsFor(trailId: number): Observable<string[]> {
+    return this.db.collection<string>(`allComments/${trailId}/comments`).valueChanges();
+  }
+  getUserComment(trailId: number, userID: string): Observable<string> {
+    return this.db.collection<string>(`allComments/${trailId}/comments`).doc<string>(userID).valueChanges();
+  }
+  updateCommentRating(trailId: number, userID: string, rating: number): void {
+    this.db.collection(`allComments/${trailId}/comments`).doc(userID).update({ 'rating': rating });
+  }
+  deleteCommment(trailId: number, userID: string): void {
+    this.db.collection(`allComments/${trailId}/comments`).doc(userID).delete();
+  }
+
 }
