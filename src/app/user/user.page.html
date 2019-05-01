@@ -24,76 +24,129 @@
 </ion-header>
 
 <ion-content padding>
-  <div *ngIf="user$ | async as user ;else button">
-    <div class="lists">
-      <div>
-        <ion-list *ngIf='hiked$ | async as hiked'>
-          <ion-list-header>
-            <ion-label>Hiked</ion-label>
-          </ion-list-header>
-          <ion-item class='select' *ngFor='let trail of hiked'>
-            <div>
-              <div>
-                <h2 (click)=goToTrail(trail.id)>{{ trail.name }}</h2>
-              </div>
-              <div>
-                <ion-chip>
-                  <ion-label>Miles <div>{{ trail.length }}</div>
-                  </ion-label>
-                </ion-chip>
-                <ion-chip>
-                  <ion-label>Vertical Gain <div>{{ trail.ascent }}</div>
-                  </ion-label>
-                </ion-chip>
-                <ion-chip>
-                  <ion-label>Average Rating
-                    <div class='stars' [ngStyle]="{ 'width' : trail.stars*14+'px'}">
-                      <ion-icon name='star'></ion-icon>
-                      <ion-icon name='star'></ion-icon>
-                      <ion-icon name='star'></ion-icon>
-                      <ion-icon name='star'></ion-icon>
-                      <ion-icon name='star'></ion-icon>
-                    </div>
-                  </ion-label>
-                </ion-chip>
-              </div>
-            </div>
-          </ion-item>
-          <ion-item>
-            <ion-label>Totals</ion-label>
-            <ion-chip>
-              <ion-label>Miles<div>{{ distance }}</div>
-              </ion-label>
-            </ion-chip>
-            <ion-chip>
-              <ion-label>Vertical Feet<div>{{ Vfeet }}</div>
-              </ion-label>
-            </ion-chip>
-          </ion-item>
-        </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label>Trails I've Hiked</ion-label>
+      <div  *ngIf='big'>
+        <ion-label>Totals</ion-label>
+        <ion-chip>
+          <ion-label>Number of Trails <div>{{ trailCount }}</div>
+          </ion-label>
+        </ion-chip>
+        <ion-chip>
+          <ion-label>Miles<div>{{ distance }}</div>
+          </ion-label>
+        </ion-chip>
+        <ion-chip>
+          <ion-label>Vertical Feet<div>{{ Vfeet }}</div>
+          </ion-label>
+        </ion-chip>
       </div>
-      <!-- <div>
-        <ion-list *ngIf='toHike$ | async as toHike'>
-          <ion-list-header>
-            <ion-label>Want to Hike</ion-label>
-          </ion-list-header>
-          <ion-item class="select" *ngFor='let trail of toHike'>
-            <ion-label (click)=goToTrail(trail.id)>{{ trail.name }}</ion-label>
-          </ion-item>
-        </ion-list>
-      </div> -->
-    </div>
+      <ion-toggle [(ngModel)]=showHiked></ion-toggle>
+    </ion-item>
 
-  </div>
+    <div *ngIf=showHiked>
+      <div *ngIf="user$ | async as user ;else button" class="lists">
+        <div>
+          <ion-list class="box" *ngIf='hiked$ | async as hiked'>
+            <ion-card (click)=goToTrail(trail.id) class='select' *ngFor='let trail of hiked'>
+              <ion-img slot="start" class='thumb' [src]=trail.imgSmall alt=""></ion-img>
+              <div>
+                <div>
+                  <h2>{{ trail.name }}</h2>
+                </div>
 
-  <ng-template #button>
-    <div class='cnter'>
-      <div class='btn' (click)='login()'>
-        <div class="image">&nbsp;</div>
-        <div class='text'>
-          Sign in with Google.
+                <div class='nowrap'>
+                  <div class='stars' [ngStyle]="{ 'width' : trail.stars*14+'px'}">
+                    <div class="container">
+                      <ion-icon class="star" name='star'></ion-icon>
+                      <ion-icon class="star" name='star'></ion-icon>
+                      <ion-icon class="star" name='star'></ion-icon>
+                      <ion-icon class="star" name='star'></ion-icon>
+                      <ion-icon class="star" name='star'></ion-icon>
+                    </div>
+                  </div>
+                  <div class='pad'>
+                    {{ trail.stars }}
+                  </div>
+                </div>
+
+                <div>
+                  <ion-chip>
+                    <ion-label>Miles <div>{{ trail.length }}</div>
+                    </ion-label>
+                  </ion-chip>
+                  <ion-chip>
+                    <ion-label>Vertical Gain <div>{{ trail.ascent }}</div>
+                    </ion-label>
+                  </ion-chip>
+                </div>
+              </div>
+            </ion-card>
+          </ion-list>
         </div>
       </div>
     </div>
-  </ng-template>
+
+
+
+    <ion-item>
+      <ion-label>Trails I Want to Hike</ion-label>
+      <ion-toggle [(ngModel)]="showToHike"></ion-toggle>
+    </ion-item>
+
+    <div *ngIf=showToHike>
+      <div *ngIf="user$ | async as user ;else button" class="lists">
+        <div>
+          <ion-list class="box" *ngIf='toHike$ | async as hike'>
+            <ion-card (click)=goToTrail(trail.id) class='select' *ngFor='let trail of hike'>
+              <ion-img slot="start" class='thumb' [src]=trail.imgSmall alt=""></ion-img>
+              <div>
+                <div>
+                  <h2>{{ trail.name }}</h2>
+                </div>
+    
+                <div class='nowrap'>
+                  <div class='stars' [ngStyle]="{ 'width' : trail.stars*14+'px'}">
+                    <div class="container">
+                      <ion-icon class="star" name='star'></ion-icon>
+                      <ion-icon class="star" name='star'></ion-icon>
+                      <ion-icon class="star" name='star'></ion-icon>
+                      <ion-icon class="star" name='star'></ion-icon>
+                      <ion-icon class="star" name='star'></ion-icon>
+                    </div>
+                  </div>
+                  <div class='pad'>
+                    {{ trail.stars }}
+                  </div>
+                </div>
+    
+                <div>
+                  <ion-chip>
+                    <ion-label>Miles <div>{{ trail.length }}</div>
+                    </ion-label>
+                  </ion-chip>
+                  <ion-chip>
+                    <ion-label>Vertical Gain <div>{{ trail.ascent }}</div>
+                    </ion-label>
+                  </ion-chip>
+                </div>
+              </div>
+            </ion-card>
+          </ion-list>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #button>
+      <div class='cnter'>
+        <div class='btn' (click)='login()'>
+          <div class="image">&nbsp;</div>
+          <div class='text'>
+            Sign in with Google.
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ion-list>
 </ion-content>
