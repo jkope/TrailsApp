@@ -13,7 +13,7 @@ import { takeUntil, tap } from 'rxjs/operators';
 export class AuthService {
 
   private unsubscribe$ = new Subject();
-  private userData = {
+  public userData = {
     name: '',
     id: '',
   };
@@ -54,6 +54,12 @@ export class AuthService {
 
   authenticated(): Observable<any> {
     return this.afAuth.authState;
+  }
+
+  getUser() {
+    this.afAuth.user.subscribe(user => {
+      return user.uid;
+    });
   }
 
 }

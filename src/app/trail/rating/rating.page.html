@@ -10,11 +10,16 @@
   <p style="text-align: center">{{trail.summary}}</p>
 
   <div>
-    <form (ngSubmit)="submitForm()">
+    <form  (ngSubmit)="submitForm()">
       <ion-label>Rate and Comment</ion-label>
+      <p>Your Rating: {{rating / 10 | number}}</p>
       <ion-item>
-        <ion-input type="text" [(ngModel)]="rate" name="rate"></ion-input>
+        <ion-range ticks="true" snaps="true" step='0.1' min="0" pin="false" max="50" color="secondary"  name='rate' [(ngModel)]='rating'>
+          <ion-label slot="start">0</ion-label>
+          <ion-label slot="end">5</ion-label>
+        </ion-range>
       </ion-item>
+
       <ion-item>
         <!-- <ion-label>Description</ion-label> -->
         <ion-textarea [(ngModel)]="comment" placeholder="Leave a comment here..." name="comment"></ion-textarea>
