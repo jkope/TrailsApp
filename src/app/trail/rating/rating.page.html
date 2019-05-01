@@ -12,9 +12,9 @@
   <div>
     <form  (ngSubmit)="submitForm()">
       <ion-label>Rate and Comment</ion-label>
-      <p>Your Rating: {{rating / 10 | number}}</p>
+      <p>Your Rating: {{rating | number}}</p>
       <ion-item>
-        <ion-range ticks="true" snaps="true" step='0.1' min="0" pin="false" max="50" color="secondary"  name='rate' [(ngModel)]='rating'>
+        <ion-range ticks="true" snaps="true" step='.5' min="0" pin="false" max="5" color="secondary"  name='rate' [(ngModel)]='rating'>
           <ion-label slot="start">0</ion-label>
           <ion-label slot="end">5</ion-label>
         </ion-range>
