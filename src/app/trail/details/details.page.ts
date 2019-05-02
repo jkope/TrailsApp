@@ -32,12 +32,11 @@ export class DetailsPage implements OnInit {
       this.trail = data.trails[0];
       // console.log(this.trail);
     });
-    if(this.firebase.getHasHikedById(this.id)){
+    if (this.firebase.getHasHikedById(this.id)) {
         this.segmentValue = 'Hiked';
         console.log(this.segmentValue);
-    }
-    else {
-        if(this.firebase.getToHikeById(this.id)){
+    } else {
+        if (this.firebase.getToHikeById(this.id)) {
             this.segmentValue = 'toHike';
             console.log(this.segmentValue);
         }
