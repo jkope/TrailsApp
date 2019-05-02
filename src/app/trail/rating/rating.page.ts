@@ -28,24 +28,21 @@ export class RatingPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userId = this.auth.getUser();
-    console.log(this.id);
+    this.auth.authenticated().subscribe(data => {
+      this.userId = data.uid;
+    });
     this.trailApi.getTrailsById([this.id]).subscribe(data => {
       this.trail = data.trails[0];
     });
     this.firebase.getCommentsFor(this.id).subscribe(data => {
-      // this.comments = data;
-      console.log(data);
+      this.comments = data;
     });
-    if (!this.rating) {this.rating = this.firebase.getUserTrailRating(this.id); }
   }
 
   submitForm() {
     const trail = {id: this.id};
     const com = {comment: this.comment,
                       rating: this.rating};
-    console.log(this.rating + ' ' + this.comment);
-    console.log(com);
     this.firebase.addTrail(trail, com, this.userId );
   }
 

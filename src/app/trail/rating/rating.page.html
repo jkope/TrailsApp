@@ -26,6 +26,12 @@
       </ion-item>
       <ion-button ion-button type="submit" block>Submit</ion-button>
     </form>
+    <ion-label class="push">Comments</ion-label>
+      <ion-item class='col' *ngFor= 'let commenting of comments'>
+      <div >
+        {{commenting.comment}}
+      </div>
+    </ion-item>
   </div>
 
 

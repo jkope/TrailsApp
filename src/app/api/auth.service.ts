@@ -57,7 +57,8 @@ export class AuthService {
   }
 
   getUser() {
-    this.afAuth.user.subscribe(user => {
+    this.afAuth.authState.subscribe(user => {
+      console.log(user);
       return user.uid;
     });
   }
