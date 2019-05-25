@@ -36,7 +36,7 @@ export class WeatherComponent implements OnInit {
       this.lng = data.trails[0].longitude;
       this.weather.getForecastByCoordinates(this.lat,this.lng).subscribe(data => {
         for(let i = 0; i < data.list.length; i++){
-          let months = ['Jan', 'Feb', 'Mar', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Dec'];
+          let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
           let temp = new Date(data.list[i].dt * 1000);
           let date = temp.getDate();
           let month = months[temp.getMonth()];

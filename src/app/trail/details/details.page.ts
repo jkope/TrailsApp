@@ -32,6 +32,9 @@ export class DetailsPage implements OnInit {
       this.trail = data.trails[0];
       // console.log(this.trail);
     });
+
+    console.log(this.firebase.getToHikeById(this.id));
+    console.log(this.firebase.getHasHikedById(this.id));
     if (this.firebase.getHasHikedById(this.id)) {
         this.segmentValue = 'Hiked';
         console.log(this.segmentValue);
@@ -41,7 +44,7 @@ export class DetailsPage implements OnInit {
             console.log(this.segmentValue);
         }
     }
-    console.log(this.segmentValue);
+    // console.log(this.segmentValue);
   }
 
   segmentChanged (event) {

@@ -39,6 +39,8 @@ export class WeatherPage implements OnInit {
         for(let i = 0; i < data.list.length; i++){
           let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
           let temp = new Date(data.list[i].dt * 1000);
+          console.log(temp, data.list[i].dt);
+          console.log('Im in this dfkljf;asdfjkasl;djfkasld;fjaskdlfjksld');
           let date = temp.getDate();
           let month = months[temp.getMonth()];
           // console.log(month);
