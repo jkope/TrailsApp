@@ -46,9 +46,9 @@ export class FirebaseService {
   }
   getToHikeById(trailID: number): any {
     // tslint:disable-next-line:max-line-length
-    this.db.collection<Trail>(`users/${this.afAuth.auth.currentUser.uid}/toHike`).doc<Trail>(String(trailID)).get().toPromise().then(doc => {
-      return doc.exists;
-    });
+    // this.db.collection<Trail>(`users/${this.afAuth.auth.currentUser.uid}/toHike`).doc<Trail>(String(trailID)).get().toPromise().then(doc => {
+    //   return doc.exists;
+    // });
   }
   removeToHike(hikeID: number): Promise<void> {
     return this.db.collection(`users/${this.afAuth.auth.currentUser.uid}/toHike`).doc(String(hikeID)).delete();
